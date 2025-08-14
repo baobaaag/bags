@@ -1,153 +1,137 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Baobag Shop</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baobag | شنط بتصميم أنيق</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: #fff;
-      color: #d6336c;
-    }
-    header {
-      background-color: #f8d7da;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 36px;
-      margin: 0;
-      font-family: 'Cursive', sans-serif;
-    }
-    .section-title {
-      text-align: center;
-      font-size: 28px;
-      margin-top: 40px;
-      margin-bottom: 20px;
-    }
-    .products {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 0 20px;
-    }
-    .product-card {
-      background-color: #ffe6eb;
-      border-radius: 15px;
-      width: 220px;
-      text-align: center;
-      padding: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-    .slider img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-    }
-    .slider img.active {
-      opacity: 1;
-    }
-    .product-name {
-      font-weight: bold;
-      margin-top: 10px;
-      font-size: 18px;
-    }
-    .product-price {
-      color: #e63946;
-      margin-top: 5px;
-      font-size: 16px;
-    }
-    footer {
-      background-color: #f8d7da;
-      text-align: center;
-      padding: 15px;
-      font-size: 16px;
-    }
-    a.order-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #d6336c;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    a.order-btn:hover {
-      background-color: #b3244a;
-    }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
-<body>
+<body class="bg-white text-slate-800">
 
-  <header>
-    <h1>Baobag</h1>
+  <!-- Header -->
+  <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur border-b z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-pink-600">Baobag</h1>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="#hero" class="hover:text-pink-600">الرئيسية</a>
+        <a href="#products" class="hover:text-pink-600">المنتجات</a>
+        <a href="#about" class="hover:text-pink-600">عنّا</a>
+        <a href="#contact" class="hover:text-pink-600">تواصل معنا</a>
+      </nav>
+      <a href="#products" class="bg-pink-600 text-white px-4 py-2 rounded-lg text-sm md:hidden">تسوق الآن</a>
+    </div>
   </header>
 
-  <div class="section-title">منتجاتنا</div>
-
-  <div class="products">
-
-    <!-- Bag 1 -->
-    <div class="product-card">
-      <div class="slider">
-        <img src="bag1.jpg.jpg" class="active" />
-        <img src="bag1-2.jpg" />
-        <img src="bag1-3.jpg" />
-      </div>
-      <div class="product-name">Classic Pink Bag</div>
-      <div class="product-price">250 EGP</div>
-      <a class="order-btn" href="https://wa.me/201148531602?text=عايز اطلب Classic Pink Bag" target="_blank">اطلب الآن</a>
+  <!-- Hero -->
+  <section id="hero" class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1400&q=80');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative text-center text-white">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">شنط أنيقة لحياتك اليومية</h2>
+      <p class="mb-6 text-lg md:text-xl">Baobag بتقدملك الجودة والأناقة في كل قطعة</p>
+      <a href="#products" class="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-lg text-lg font-semibold">تسوق الآن</a>
     </div>
+  </section>
 
-    <!-- Bag 2 -->
-    <div class="product-card">
-      <div class="slider">
-        <img src="bag2.jpg" class="active" />
-        <img src="bag2-2.jpg" />
-        <img src="bag2-3.jpg" />
+  <!-- Products -->
+  <section id="products" class="max-w-7xl mx-auto px-4 py-16">
+    <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
+    <div class="grid gap-6 md:grid-cols-3 sm:grid-cols-2">
+      
+      <!-- Product card -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="Bag" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Classic Tote</h4>
+          <p class="text-sm text-slate-600 mt-1">شنطة عملية يومية بألوان متعددة.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">450 EGP</span>
+            <a href="https://wa.me/201148531602?text=عايز اطلب Classic Tote" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
+          </div>
+        </div>
       </div>
-      <div class="product-name">LILLY</div>
-      <div class="product-price">450 EGP</div>
-      <a class="order-btn" href="https://wa.me/201148531602?text=عايز اطلب LILLY" target="_blank">اطلب الآن</a>
+
+      <!-- Product card -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1618354691315-3b4975d1bcd5?auto=format&fit=crop&w=800&q=80" alt="Bag" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Mini Crossbody</h4>
+          <p class="text-sm text-slate-600 mt-1">شنطة صغيرة أنيقة تناسب الخروجات السريعة.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">370 EGP</span>
+            <a href="https://wa.me/201148531602?text=عايز اطلب Mini Crossbody" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product card -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1516542076529-1ea3854896e1?auto=format&fit=crop&w=800&q=80" alt="Bag" class="w-full h-60 object-cover">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Laptop Sleeve</h4>
+          <p class="text-sm text-slate-600 mt-1">جراب مبطن يحافظ على جهازك بأمان.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">520 EGP</span>
+            <a href="https://wa.me/201148531602?text=عايز اطلب Laptop Sleeve" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
+          </div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-  </div>
+  <!-- About -->
+  <section id="about" class="bg-pink-50 py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">عن Baobag</h3>
+      <p class="text-slate-700 leading-relaxed text-lg">
+        Baobag هي علامة تجارية مصرية بتقدم شنط بتصميم أنيق وجودة عالية. هدفنا إن كل عميل يلاقي شنطة
+        تعكس شخصيته وتخلي يومه أسهل وأكثر أناقة.
+      </p>
+    </div>
+  </section>
 
-  <footer>
-    للطلبات على الواتساب: <a href="https://wa.me/201148531602" target="_blank">201148531602</a>
+  <!-- Testimonials -->
+  <section class="max-w-7xl mx-auto px-4 py-16">
+    <h3 class="text-3xl font-bold text-center mb-10">آراء عملائنا</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white border rounded-xl p-6 shadow-sm">
+        <p class="text-slate-600 mb-4">“شنط جميلة جدًا والخامة تحفة. شكراً Baobag!”</p>
+        <span class="font-semibold text-pink-600">سارة</span>
+      </div>
+      <div class="bg-white border rounded-xl p-6 shadow-sm">
+        <p class="text-slate-600 mb-4">“وصلتني في المعاد والتعبئة شيك جدًا. أنصح أي حد بيها.”</p>
+        <span class="font-semibold text-pink-600">محمود</span>
+      </div>
+      <div class="bg-white border rounded-xl p-6 shadow-sm">
+        <p class="text-slate-600 mb-4">“أول مرة أشتري شنطة أونلاين وتطلع بالجودة دي. ممتاز.”</p>
+        <span class="font-semibold text-pink-600">ليلى</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-pink-50 py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">تواصل معنا</h3>
+      <p class="mb-4">للطلبات والاستفسارات يمكنك التواصل معنا عبر الواتساب:</p>
+      <a href="https://wa.me/201148531602" target="_blank" class="bg-pink-600 text-white px-6 py-3 rounded-lg inline-block">📱 201148531602</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-pink-600 text-white py-6 mt-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2025 Baobag. جميع الحقوق محفوظة.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-pink-200">Facebook</a>
+        <a href="#" class="hover:text-pink-200">Instagram</a>
+        <a href="#" class="hover:text-pink-200">WhatsApp</a>
+      </div>
+    </div>
   </footer>
-
-  <script>
-    // Slide show per product
-    document.querySelectorAll(".slider").forEach((slider) => {
-      const images = slider.querySelectorAll("img");
-      let index = 0;
-      setInterval(() => {
-        images[index].classList.remove("active");
-        index = (index + 1) % images.length;
-        images[index].classList.add("active");
-      }, 3000);
-    });
-  </script>
 
 </body>
 </html>
-
