@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
+    .modal { display: none; }
   </style>
 </head>
 <body class="bg-white text-slate-800">
@@ -38,43 +39,56 @@
   <!-- Products -->
   <section id="products" class="max-w-7xl mx-auto px-4 py-16">
     <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
-    <div class="grid gap-6 md:grid-cols-3 sm:grid-cols-2">
-      
-      <!-- Product card -->
+    <div class="grid gap-6 md:grid-cols-4 sm:grid-cols-2">
+
+      <!-- Product 1 -->
       <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="Bag" class="w-full h-60 object-cover">
+        <img src="https://images.unsplash.com/photo-1618354691315-3b4975d1bcd5?auto=format&fit=crop&w=800&q=80" alt="LILLY" class="w-full h-60 object-cover cursor-pointer product-img">
         <div class="p-4">
-          <h4 class="font-semibold text-lg">Classic Tote</h4>
-          <p class="text-sm text-slate-600 mt-1">شنطة عملية يومية بألوان متعددة.</p>
+          <h4 class="font-semibold text-lg">LILLY</h4>
+          <p class="text-sm text-slate-600 mt-1">شنطة أنيقة عملية.</p>
           <div class="flex items-center justify-between mt-3">
             <span class="font-bold text-pink-600">450 EGP</span>
-            <a href="https://wa.me/201148531602?text=عايز اطلب Classic Tote" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
+            <a href="https://wa.me/201148531602?text=عايز اطلب LILLY" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
           </div>
         </div>
       </div>
 
-      <!-- Product card -->
+      <!-- Product 2 -->
       <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1618354691315-3b4975d1bcd5?auto=format&fit=crop&w=800&q=80" alt="Bag" class="w-full h-60 object-cover">
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80" alt="Trendy butter yellow bag" class="w-full h-60 object-cover cursor-pointer product-img">
         <div class="p-4">
-          <h4 class="font-semibold text-lg">Mini Crossbody</h4>
-          <p class="text-sm text-slate-600 mt-1">شنطة صغيرة أنيقة تناسب الخروجات السريعة.</p>
+          <h4 class="font-semibold text-lg">Trendy butter yellow bag</h4>
+          <p class="text-sm text-slate-600 mt-1">شنطة كاجوال موضة.</p>
           <div class="flex items-center justify-between mt-3">
-            <span class="font-bold text-pink-600">370 EGP</span>
-            <a href="https://wa.me/201148531602?text=عايز اطلب Mini Crossbody" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
+            <span class="font-bold text-pink-600">360 EGP</span>
+            <a href="https://wa.me/201148531602?text=عايز اطلب Trendy butter yellow bag" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
           </div>
         </div>
       </div>
 
-      <!-- Product card -->
+      <!-- Product 3 -->
       <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1516542076529-1ea3854896e1?auto=format&fit=crop&w=800&q=80" alt="Bag" class="w-full h-60 object-cover">
+        <img src="https://images.unsplash.com/photo-1516542076529-1ea3854896e1?auto=format&fit=crop&w=800&q=80" alt="Clutch Okhtein" class="w-full h-60 object-cover cursor-pointer product-img">
         <div class="p-4">
-          <h4 class="font-semibold text-lg">Laptop Sleeve</h4>
-          <p class="text-sm text-slate-600 mt-1">جراب مبطن يحافظ على جهازك بأمان.</p>
+          <h4 class="font-semibold text-lg">Clutch Okhtein</h4>
+          <p class="text-sm text-slate-600 mt-1">كلاتش فخم وأنيق.</p>
           <div class="flex items-center justify-between mt-3">
-            <span class="font-bold text-pink-600">520 EGP</span>
-            <a href="https://wa.me/201148531602?text=عايز اطلب Laptop Sleeve" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
+            <span class="font-bold text-pink-600">500 EGP</span>
+            <a href="https://wa.me/201148531602?text=عايز اطلب Clutch Okhtein" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1520975922215-cf77a876c9c0?auto=format&fit=crop&w=800&q=80" alt="mini bag" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">mini bag</h4>
+          <p class="text-sm text-slate-600 mt-1">شنطة صغيرة كيوت.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">159 EGP</span>
+            <a href="https://wa.me/201148531602?text=عايز اطلب mini bag" target="_blank" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</a>
           </div>
         </div>
       </div>
@@ -87,36 +101,16 @@
     <div class="max-w-5xl mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-6">عن Baobag</h3>
       <p class="text-slate-700 leading-relaxed text-lg">
-        Baobag هي علامة تجارية مصرية بتقدم شنط بتصميم أنيق وجودة عالية. هدفنا إن كل عميل يلاقي شنطة
-        تعكس شخصيته وتخلي يومه أسهل وأكثر أناقة.
+        Baobag علامة مصرية بتقدم شنط أنيقة وعملية بأسعار مناسبة. هدفنا نوصللك الجودة والستايل في كل قطعة.
       </p>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section class="max-w-7xl mx-auto px-4 py-16">
-    <h3 class="text-3xl font-bold text-center mb-10">آراء عملائنا</h3>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white border rounded-xl p-6 shadow-sm">
-        <p class="text-slate-600 mb-4">“شنط جميلة جدًا والخامة تحفة. شكراً Baobag!”</p>
-        <span class="font-semibold text-pink-600">سارة</span>
-      </div>
-      <div class="bg-white border rounded-xl p-6 shadow-sm">
-        <p class="text-slate-600 mb-4">“وصلتني في المعاد والتعبئة شيك جدًا. أنصح أي حد بيها.”</p>
-        <span class="font-semibold text-pink-600">محمود</span>
-      </div>
-      <div class="bg-white border rounded-xl p-6 shadow-sm">
-        <p class="text-slate-600 mb-4">“أول مرة أشتري شنطة أونلاين وتطلع بالجودة دي. ممتاز.”</p>
-        <span class="font-semibold text-pink-600">ليلى</span>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact -->
-  <section id="contact" class="bg-pink-50 py-16">
+  <section id="contact" class="bg-white py-16">
     <div class="max-w-5xl mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-6">تواصل معنا</h3>
-      <p class="mb-4">للطلبات والاستفسارات يمكنك التواصل معنا عبر الواتساب:</p>
+      <p class="mb-4">لطلباتك تواصل معنا عبر الواتساب:</p>
       <a href="https://wa.me/201148531602" target="_blank" class="bg-pink-600 text-white px-6 py-3 rounded-lg inline-block">📱 201148531602</a>
     </div>
   </section>
@@ -132,6 +126,48 @@
       </div>
     </div>
   </footer>
+
+  <!-- Modal -->
+  <div id="imgModal" class="modal fixed inset-0 bg-black/80 flex items-center justify-center z-50">
+    <span id="closeModal" class="absolute top-6 right-8 text-white text-4xl cursor-pointer">&times;</span>
+    <img id="modalImage" class="max-h-[80vh] max-w-[90vw] object-contain" src="" alt="zoomed">
+  </div>
+
+  <script>
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementById('closeModal');
+    const imgs = document.querySelectorAll('.product-img');
+    let currentIndex = 0;
+
+    imgs.forEach((img, idx) => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        currentIndex = idx;
+      });
+    });
+
+    closeBtn.onclick = () => { modal.style.display = 'none'; };
+    modal.onclick = (e) => { if(e.target === modal) modal.style.display='none'; };
+
+    // Navigate with arrows
+    document.addEventListener('keydown', (e) => {
+      if (modal.style.display === 'flex') {
+        if (e.key === 'ArrowRight') {
+          currentIndex = (currentIndex + 1) % imgs.length;
+          modalImg.src = imgs[currentIndex].src;
+        }
+        if (e.key === 'ArrowLeft') {
+          currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+          modalImg.src = imgs[currentIndex].src;
+        }
+        if (e.key === 'Escape') {
+          modal.style.display = 'none';
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
