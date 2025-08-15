@@ -151,6 +151,16 @@
     </div>
   </div>
 
+  <!-- Gallery Popup -->
+  <div id="galleryModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <button onclick="closeGallery()" class="absolute top-4 right-6 text-white text-3xl">&times;</button>
+    <div class="relative max-w-3xl w-full flex items-center justify-center">
+      <button onclick="prevImage()" class="absolute left-4 text-white text-3xl">&#10094;</button>
+      <img id="galleryImage" src="" class="max-h-[80vh] rounded-lg shadow-lg">
+      <button onclick="nextImage()" class="absolute right-4 text-white text-3xl">&#10095;</button>
+    </div>
+  </div>
+
   <script>
     // Google Script URL
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya5FExlprG8iqR4ursd2EBb5zTQffjgd68H-fr_fvW2SBqr5_CyVzWcK2PhxL-49Of/exec";
@@ -185,10 +195,46 @@
           alert("حصل خطأ، حاول تاني ❌");
         });
     });
+
+    // -------- Gallery Functions --------
+    const productImages = {
+      "LILLY": ["LILLY.jpg", "LILLY2.jpg", "LILLY3.jpg"],
+      "Trendy butter yellow bag": ["Trendy butter yellow bag.jpg", "yellow2.jpg"],
+      "Clutch Okhtein": ["Clutch Okhtein.jpg", "Clutch2.jpg"],
+      "mini bag": ["mini bag.jpg", "mini2.jpg", "mini3.jpg"]
+    };
+
+    let currentProduct = "";
+    let currentIndex = 0;
+
+    document.querySelectorAll(".product-img").forEach(img => {
+      img.addEventListener("click", function(){
+        currentProduct = this.alt;
+        currentIndex = 0;
+        openGallery();
+      });
+    });
+
+    function openGallery(){
+      document.getElementById("galleryModal").classList.remove("hidden");
+      document.getElementById("galleryModal").classList.add("flex");
+      showImage();
+    }
+    function closeGallery(){
+      document.getElementById("galleryModal").classList.add("hidden");
+    }
+    function showImage(){
+      document.getElementById("galleryImage").src = productImages[currentProduct][currentIndex];
+    }
+    function nextImage(){
+      currentIndex = (currentIndex + 1) % productImages[currentProduct].length;
+      showImage();
+    }
+    function prevImage(){
+      currentIndex = (currentIndex - 1 + productImages[currentProduct].length) % productImages[currentProduct].length;
+      showImage();
+    }
   </script>
 
 </body>
 </html>
-
-
-
