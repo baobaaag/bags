@@ -193,6 +193,7 @@
       e.preventDefault();
       fetch(SCRIPT_URL, {
         method: "POST",
+         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           product: document.getElementById('productName').value,
           name: document.getElementById('custName').value,
@@ -214,7 +215,7 @@
       "LILLY": ["LILLY.jpg", "LILLY2.jpg", "LILLY3.jpg"],
       "Trendy butter yellow bag": ["Trendy butter yellow bag.jpg", "yellow2.jpg"],
       "Clutch Okhtein": ["Clutch Okhtein.jpg", "Clutch2.jpg"],
-      "mini bag": ["mini bag.jpg", "mini2.jpg", "mini3.jpg"]
+      "mini bag": ["mini bag.jpg", "mini2.jpg", "mini3.jpg"],
       "trendy leather bag": ["trendy leather bag.jpg", "trendy leather bag2.jpg", "trendy leather bag3.jpg"]
     };
 
@@ -252,6 +253,7 @@
 
 </body>
 </html>
+
 
 
 
