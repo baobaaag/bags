@@ -40,7 +40,7 @@
   <section id="products" class="max-w-7xl mx-auto px-4 py-16">
     <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
     <div class="grid gap-6 md:grid-cols-4 sm:grid-cols-2">
-      <!-- هنا المنتجات هتظهر من جوجل شيت -->
+      <!-- المنتجات هتظهر هنا -->
     </div>
   </section>
 
@@ -68,8 +68,8 @@
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
       <p>© 2025 Baobag. جميع الحقوق محفوظة.</p>
       <div class="flex gap-4">
-        <a href="https://www.tiktok.com/@baobaag?_t=ZS-8ytfgDM2pEe&_r=1" class="hover:text-pink-200">TikTok</a>
-        <a href="https://www.instagram.com/baobaaag?igsh=a291dmx1cmxmODg1" class="hover:text-pink-200">Instagram</a>
+        <a href="https://www.tiktok.com/@baobaag" class="hover:text-pink-200">TikTok</a>
+        <a href="https://www.instagram.com/baobaaag" class="hover:text-pink-200">Instagram</a>
         <a href="https://wa.me/201115690207" class="hover:text-pink-200">WhatsApp</a>
       </div>
     </div>
@@ -115,6 +115,8 @@
     // رابط إرسال الطلبات
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya5FExlprG8iqR4ursd2EBb5zTQffjgd68H-fr_fvW2SBqr5_CyVzWcK2PhxL-49Of/exec";
 
+    let productImages = {};  // لتخزين صور كل منتج
+
     // تحميل المنتجات من جوجل شيت
     async function loadProducts() {
       try {
@@ -123,10 +125,13 @@
         let container = document.querySelector("#products .grid");
         container.innerHTML = "";
 
-        products.forEach(p => {
+        products.forEach((p, index) => {
+          let imgs = p.images.split(",").map(i => i.trim());
+          let firstImg = imgs[0];
+
           container.innerHTML += `
             <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
-              <img src="${p.image}" alt="${p.name}" class="w-full h-60 object-cover cursor-pointer product-img">
+              <img src="${firstImg}" alt="${p.name}" class="w-full h-60 object-cover cursor-pointer" onclick="openGallery(${index})">
               <div class="p-4">
                 <h4 class="font-semibold text-lg">${p.name}</h4>
                 <p class="text-sm text-slate-600 mt-1">${p.description}</p>
@@ -137,6 +142,8 @@
               </div>
             </div>
           `;
+
+          productImages[index] = imgs;
         });
       } catch (err) {
         console.error(err);
@@ -176,13 +183,30 @@
     });
 
     // معرض الصور
-    let currentProduct = "";
-    let currentIndex = 0;
-    function openGallery(){ document.getElementById("galleryModal").classList.remove("hidden"); document.getElementById("galleryModal").classList.add("flex"); }
-    function closeGallery(){ document.getElementById("galleryModal").classList.add("hidden"); }
-    function showImage(){ document.getElementById("galleryImage").src = currentProduct[currentIndex]; }
-    function nextImage(){ currentIndex = (currentIndex + 1) % currentProduct.length; showImage(); }
-    function prevImage(){ currentIndex = (currentIndex - 1 + currentProduct.length) % currentProduct.length; showImage(); }
+    let currentProductIndex = 0;
+    let currentImageIndex = 0;
+
+    function openGallery(productIndex){
+      currentProductIndex = productIndex;
+      currentImageIndex = 0;
+      document.getElementById("galleryModal").classList.remove("hidden");
+      document.getElementById("galleryModal").classList.add("flex");
+      showImage();
+    }
+    function closeGallery(){
+      document.getElementById("galleryModal").classList.add("hidden");
+    }
+    function showImage(){
+      document.getElementById("galleryImage").src = productImages[currentProductIndex][currentImageIndex];
+    }
+    function nextImage(){
+      currentImageIndex = (currentImageIndex + 1) % productImages[currentProductIndex].length;
+      showImage();
+    }
+    function prevImage(){
+      currentImageIndex = (currentImageIndex - 1 + productImages[currentProductIndex].length) % productImages[currentProductIndex].length;
+      showImage();
+    }
   </script>
 
 </body>
