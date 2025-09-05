@@ -38,8 +38,80 @@
   <!-- Products -->
   <section id="products" class="max-w-7xl mx-auto px-4 py-16">
     <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
-    <div class="grid gap-6 md:grid-cols-4 sm:grid-cols-2"></div>
+    <div class="grid gap-6 md:grid-cols-4 sm:grid-cols-2">
+
+      <!-- Product Example -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="LILLY.jpg" alt="LILLY" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">LILLY</h4>
+          <p class="text-sm text-slate-600 mt-1">شنطة أنيقة عملية.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">450 EGP</span>
+            <button onclick="openForm('LILLY')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- باقي المنتجات (نفس الشكل) -->
+      <!-- ... -->
+    </div>
   </section>
+
+  <!-- About -->
+  <section id="about" class="bg-pink-50 py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">عن Baobag</h3>
+      <p class="text-slate-700 leading-relaxed text-lg">
+        "في bao، نرى أن الحقيبة أكثر من مجرد إكسسوار، إنها تعبر عن شخصيتك..."
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">تواصل معنا</h3>
+      <p class="mb-4">لطلباتك تواصل معنا عبر الواتساب:</p>
+      <a href="https://wa.me/201115690207" target="_blank" class="bg-pink-600 text-white px-6 py-3 rounded-lg inline-block">201115690207</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-pink-600 text-white py-6 mt-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2025 Baobag. جميع الحقوق محفوظة.</p>
+      <div class="flex gap-4">
+        <a href="https://www.tiktok.com/@baobaag" class="hover:text-pink-200">TikTok</a>
+        <a href="https://www.instagram.com/baobaaag" class="hover:text-pink-200">Instagram</a>
+        <a href="https://wa.me/201115690207" class="hover:text-pink-200">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Order Popup -->
+  <div id="orderModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6">
+      <h2 class="text-lg font-semibold mb-4">اطلب الآن</h2>
+      <form id="orderForm" class="space-y-3">
+        <input type="hidden" id="productName" name="product">
+        <div>
+          <label class="block text-sm">الاسم</label>
+          <input id="custName" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <div>
+          <label class="block text-sm">رقم الموبايل</label>
+          <input id="custPhone" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <div>
+          <label class="block text-sm">العنوان</label>
+          <input id="custAddress" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded-lg">إرسال</button>
+      </form>
+      <button onclick="closeForm()" class="mt-3 text-sm text-gray-500">إلغاء</button>
+    </div>
+  </div>
 
   <!-- Gallery Popup -->
   <div id="galleryModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
@@ -52,54 +124,61 @@
   </div>
 
   <script>
-    // رابط جوجل شيت (API)
-    const SHEET_URL = "https://script.google.com/macros/s/AKfycbzOMhAmmVyrl8j3uIxkQX5xWFglayqRexsXYBgLBEpeH2zlgef_LH4HaK3pMyUE48Ly6g/exec";
+    // Google Script URL
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya5FExlprG8iqR4ursd2EBb5zTQffjgd68H-fr_fvW2SBqr5_CyVzWcK2PhxL-49Of/exec";
 
-    let productImages = {};  
-    let currentProductIndex = 0;
-    let currentImageIndex = 0;
-
-    // تحميل المنتجات من الشيت
-    async function loadProducts() {
-      try {
-        let res = await fetch(SHEET_URL);
-        let products = await res.json();
-
-        let container = document.querySelector("#products .grid");
-        container.innerHTML = "";
-
-        products.forEach((p, index) => {
-          // الصور متفصولة بفاصلة
-          let imgs = p.images.split(",").map(i => i.trim());
-          let firstImg = imgs[0];
-
-          container.innerHTML += `
-            <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
-              <img src="${firstImg}" alt="${p.name}" class="w-full h-60 object-cover cursor-pointer" onclick="openGallery(${index})">
-              <div class="p-4">
-                <h4 class="font-semibold text-lg">${p.name}</h4>
-                <p class="text-sm text-slate-600 mt-1">${p.description}</p>
-                <div class="flex items-center justify-between mt-3">
-                  <span class="font-bold text-pink-600">${p.price} EGP</span>
-                  <button class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
-                </div>
-              </div>
-            </div>
-          `;
-
-          // خزّن الصور الخاصة بالمنتج
-          productImages[index] = imgs;
-        });
-
-      } catch (err) {
-        console.error("Error loading products:", err);
-      }
+    // Open/Close Form
+    function openForm(productName){
+      document.getElementById('productName').value = productName;
+      document.getElementById('orderModal').classList.remove('hidden');
+      document.getElementById('orderModal').classList.add('flex');
+    }
+    function closeForm(){
+      document.getElementById('orderModal').classList.add('hidden');
     }
 
-    // فتح المعرض
-    function openGallery(productIndex){
-      currentProductIndex = productIndex;
-      currentImageIndex = 0;
+    // Send form data
+    document.getElementById("orderForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          product: document.getElementById('productName').value,
+          name: document.getElementById('custName').value,
+          phone: document.getElementById('custPhone').value,
+          address: document.getElementById('custAddress').value
+        })
+      }).then(res => res.json())
+        .then(res => {
+          alert("تم إرسال طلبك بنجاح ✅");
+          closeForm();
+          document.getElementById("orderForm").reset();
+        }).catch(err => {
+          alert("حصل خطأ، حاول تاني ❌");
+        });
+    });
+
+    // -------- Gallery Functions --------
+    const productImages = {
+      "LILLY": ["LILLY.jpg", "LILLY2.jpg", "LILLY3.jpg"],
+      "Trendy butter yellow bag": ["Trendy butter yellow bag.jpg", "yellow2.jpg"],
+      "Clutch Okhtein": ["Clutch Okhtein.jpg", "Clutch2.jpg"],
+      "mini bag": ["mini bag.jpg", "mini2.jpg", "mini3.jpg"]
+      // كمل باقي المنتجات بنفس الشكل...
+    };
+
+    let currentProduct = "";
+    let currentIndex = 0;
+
+    document.querySelectorAll(".product-img").forEach(img => {
+      img.addEventListener("click", function(){
+        currentProduct = this.alt;
+        currentIndex = 0;
+        openGallery();
+      });
+    });
+
+    function openGallery(){
       document.getElementById("galleryModal").classList.remove("hidden");
       document.getElementById("galleryModal").classList.add("flex");
       showImage();
@@ -108,20 +187,17 @@
       document.getElementById("galleryModal").classList.add("hidden");
     }
     function showImage(){
-      document.getElementById("galleryImage").src = productImages[currentProductIndex][currentImageIndex];
+      document.getElementById("galleryImage").src = productImages[currentProduct][currentIndex];
     }
     function nextImage(){
-      currentImageIndex = (currentImageIndex + 1) % productImages[currentProductIndex].length;
+      currentIndex = (currentIndex + 1) % productImages[currentProduct].length;
       showImage();
     }
     function prevImage(){
-      currentImageIndex = (currentImageIndex - 1 + productImages[currentProductIndex].length) % productImages[currentProductIndex].length;
+      currentIndex = (currentIndex - 1 + productImages[currentProduct].length) % productImages[currentProduct].length;
       showImage();
     }
-
-    // تحميل عند فتح الصفحة
-    window.addEventListener("DOMContentLoaded", loadProducts);
   </script>
+
 </body>
 </html>
-
