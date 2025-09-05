@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
+    .modal { display: none; }
   </style>
 </head>
 <body class="bg-white text-slate-800">
@@ -40,7 +41,7 @@
     <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
     <div class="grid gap-6 md:grid-cols-4 sm:grid-cols-2">
 
-      <!-- Product Example -->
+      <!-- Product 1 -->
       <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
         <img src="LILLY.jpg" alt="LILLY" class="w-full h-60 object-cover cursor-pointer product-img">
         <div class="p-4">
@@ -53,8 +54,124 @@
         </div>
       </div>
 
-      <!-- باقي المنتجات (نفس الشكل) -->
-      <!-- ... -->
+      <!-- Product 2 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="Trendy butter yellow bag.jpg" alt="Trendy butter yellow bag" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Trendy butter yellow bag</h4>
+          <p class="text-sm text-slate-600 mt-1">شنطة كاجوال موضة.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">360 EGP</span>
+            <button onclick="openForm('Trendy butter yellow bag')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="Clutch Okhtein.jpg" alt="Clutch Okhtein" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Clutch Okhtein</h4>
+          <p class="text-sm text-slate-600 mt-1">كلاتش فخم وأنيق.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">500 EGP</span>
+            <button onclick="openForm('Clutch Okhtein')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="mini bag.jpg" alt="mini bag" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">mini bag</h4>
+          <p class="text-sm text-slate-600 mt-1">شنطة صغيرة كيوت.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">159 EGP</span>
+            <button onclick="openForm('mini bag')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="trendy leather bag.jpg" alt="trendy leather bag" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">trendy leather bag.</h4>
+          <p class="text-sm text-slate-600 mt-1">s 38*30.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">350 EGP</span>
+            <button onclick="openForm('trendy leather bag')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="zara bag.jpg" alt="zara bag" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">zara bag.</h4>
+          <p class="text-sm text-slate-600 mt-1">الالوان/اسود ابيض نبيتي زيتي بيج هافان بني كحلي المقاس35*25.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">460 EGP</span>
+            <button onclick="openForm('zara bag')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+      
+       <!-- Product 7 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="mini bottega.jpg" alt="mini bottega" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">mini bottega.</h4>
+          <p class="text-sm text-slate-600 mt-1">الالوان/اسود ابيض نبيتي بني بيج بيبي بلو بينك فوشيا اصفر  مينت جولد سيلفر المقاس 26*12 مع  حزام كروس.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">300 EGP</span>
+            <button onclick="openForm('mini bottega')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 8 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="Diesel bag.jpg" alt="Diesel bag" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">Diesel bag.</h4>
+          <p class="text-sm text-slate-600 mt-1">الالوان/اسود المقاس 20*12 مع حزام كروس.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">570 EGP</span>
+            <button onclick="openForm('Diesel bag')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 9 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="city bag.jpg" alt="city bag" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">city bag.</h4>
+          <p class="text-sm text-slate-600 mt-1">الالوان/اسود المقاس23*30مع حزام كروس.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">600 EGP</span>
+            <button onclick="openForm('city bag')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+
+       <!-- Product 10 -->
+      <div class="bg-pink-50 rounded-xl shadow overflow-hidden">
+        <img src="mini pixi bag.jpg" alt="mini pixi bag" class="w-full h-60 object-cover cursor-pointer product-img">
+        <div class="p-4">
+          <h4 class="font-semibold text-lg">mini pixi bag.</h4>
+          <p class="text-sm text-slate-600 mt-1">الالوان/اسود ابيض بينك فوشيا المقاس14*10مع حزام كروس.</p>
+          <div class="flex items-center justify-between mt-3">
+            <span class="font-bold text-pink-600">350 EGP</span>
+            <button onclick="openForm('mini pixi bag')" class="bg-pink-600 text-white px-3 py-1 rounded-lg text-sm">اطلب الآن</button>
+          </div>
+        </div>
+      </div>
+      
+  
     </div>
   </section>
 
@@ -63,7 +180,7 @@
     <div class="max-w-5xl mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-6">عن Baobag</h3>
       <p class="text-slate-700 leading-relaxed text-lg">
-        "في bao، نرى أن الحقيبة أكثر من مجرد إكسسوار، إنها تعبر عن شخصيتك..."
+       "في bao، نرى أن الحقيبة أكثر من مجرد إكسسوار، إنها تعبر عن شخصيتك. ترافقك يوميًا وتحمل أغراضك وتعكس أسلوبك. نختار بعناية مجموعة واسعة من الحقائب، من حقائب اليد الأنيقة إلى الحقائب الظهر العملية، لنضمن أن نجد الحقيبة المناسبة للجميع."
       </p>
     </div>
   </section>
@@ -73,7 +190,7 @@
     <div class="max-w-5xl mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-6">تواصل معنا</h3>
       <p class="mb-4">لطلباتك تواصل معنا عبر الواتساب:</p>
-      <a href="https://wa.me/201115690207" target="_blank" class="bg-pink-600 text-white px-6 py-3 rounded-lg inline-block">201115690207</a>
+      <a href="https://wa.me/201115690207" target="_blank" class="bg-pink-600 text-white px-6 py-3 rounded-lg inline-block"> 201115690207</a>
     </div>
   </section>
 
@@ -82,14 +199,14 @@
     <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
       <p>© 2025 Baobag. جميع الحقوق محفوظة.</p>
       <div class="flex gap-4">
-        <a href="https://www.tiktok.com/@baobaag" class="hover:text-pink-200">TikTok</a>
-        <a href="https://www.instagram.com/baobaaag" class="hover:text-pink-200">Instagram</a>
+        <a href="https://www.tiktok.com/@baobaag?_t=ZS-8ytfgDM2pEe&_r=1" class="hover:text-pink-200">TikTok</a>
+        <a href="https://www.instagram.com/baobaaag?igsh=a291dmx1cmxmODg1" class="hover:text-pink-200">Instagram</a>
         <a href="https://wa.me/201115690207" class="hover:text-pink-200">WhatsApp</a>
       </div>
     </div>
   </footer>
 
-  <!-- Order Popup -->
+  <!-- Popup Form -->
   <div id="orderModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
     <div class="bg-white rounded-2xl max-w-md w-full p-6">
       <h2 class="text-lg font-semibold mb-4">اطلب الآن</h2>
@@ -127,7 +244,7 @@
     // Google Script URL
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya5FExlprG8iqR4ursd2EBb5zTQffjgd68H-fr_fvW2SBqr5_CyVzWcK2PhxL-49Of/exec";
 
-    // Open/Close Form
+    // Open form with product name
     function openForm(productName){
       document.getElementById('productName').value = productName;
       document.getElementById('orderModal').classList.remove('hidden');
@@ -157,14 +274,19 @@
           alert("حصل خطأ، حاول تاني ❌");
         });
     });
-
+  
     // -------- Gallery Functions --------
     const productImages = {
       "LILLY": ["LILLY.jpg", "LILLY2.jpg", "LILLY3.jpg"],
       "Trendy butter yellow bag": ["Trendy butter yellow bag.jpg", "yellow2.jpg"],
       "Clutch Okhtein": ["Clutch Okhtein.jpg", "Clutch2.jpg"],
-      "mini bag": ["mini bag.jpg", "mini2.jpg", "mini3.jpg"]
-      // كمل باقي المنتجات بنفس الشكل...
+      "mini bag": ["mini bag.jpg", "mini2.jpg", "mini3.jpg"],
+      "trendy leather bag": ["trendy leather bag.jpg", "trendy leather bag2.jpg", "trendy leather bag1.jpg"],
+       "zara bag": ["zara bag.jpg", "zara bag2.jpg", "zara bag1.jpg", "zara bag3.jpg", "zara bag4.jpg", "zara bag5.jpg", "zara bag6.jpg"],
+      "mini bottega": ["mini bottega.jpg", "mini bottega2.jpg", "mini bottega1.jpg", "mini bottega3.jpg", "mini bottega4.jpg", "mini bottega5.jpg", "mini bottega6.jpg", "mini bottega7.jpg", "mini bottega8.jpg", "mini bottega9.jpg", "mini bottega10.jpg", "mini bottega11.jpg", "mini bottega12.jpg", "mini bottega13.jpg", "mini bottega14.jpg", "mini bottega15.jpg", "mini bottega16.jpg", "mini bottega17.jpg", "mini bottega18.jpg", "mini bottega19.jpg", "mini bottega20.jpg", "mini bottega21.jpg", "mini bottega22.jpg", "mini bottega23.jpg", "mini bottega24.jpg", "mini bottega25.jpg", "mini bottega26.jpg", "mini bottega27.jpg", "mini bottega28.jpg", "mini bottega29.jpg",],
+      "Diesel bag": ["Diesel bag.jpg", "Diesel bag1.jpg", "Diesel bag2.jpg", "Diesel bag3.jpg", "Diesel bag4.jpg"],
+      "city bag": ["city bag.jpg", "city bag1.jpg", "city bag2.jpg", "city bag3.jpg", "city bag4.jpg", "city bag5.jpg", "city bag6.jpg", "city bag7.jpg", "city bag8.jpg", "city bag9.jpg", "city bag10.jpg"],
+      "mini pixi bag": ["mini pixi bag.jpg", "mini pixi bag1.jpg", "mini pixi bag2.jpg", "mini pixi bag3.jpg", "mini pixi bag4.jpg", "mini pixi bag5.jpg", "mini pixi bag6.jpg", "mini pixi bag7.jpg"]
     };
 
     let currentProduct = "";
