@@ -1,148 +1,415 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>متجر المنتجات</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baobag | شنط بتصميم أنيق</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
-    .modal { display: none; position: fixed; z-index: 50; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.7); }
-    .modal-content { margin: 5% auto; padding: 20px; background: white; border-radius: 12px; max-width: 500px; }
+    .modal { display: none; }
+    .modal.flex { display:flex; }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-white text-slate-800">
 
   <!-- Header -->
-  <header class="bg-white shadow-md sticky top-0 z-40">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <h1 class="text-xl font-bold">🛒 متجر المنتجات</h1>
-      <button onclick="openCart()" class="relative">
-        🛍️
-        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 rounded-full">0</span>
-      </button>
+  <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur border-b z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-pink-600">Baobag</h1>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="#hero" class="hover:text-pink-600">الرئيسية</a>
+        <a href="#products" class="hover:text-pink-600">المنتجات</a>
+        <a href="#about" class="hover:text-pink-600">عنّا</a>
+        <a href="#contact" class="hover:text-pink-600">تواصل معنا</a>
+      </nav>
+      <div class="flex items-center gap-4">
+        <a href="#products" class="bg-pink-600 text-white px-4 py-2 rounded-lg text-sm md:hidden">تسوق الآن</a>
+        <!-- Cart Icon -->
+        <div class="relative">
+          <button id="openCartBtn" aria-label="افتح السلة" class="relative text-2xl">
+            🛒
+            <span id="cartCount" class="absolute -top-2 -right-2 bg-pink-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- Products -->
-  <section class="container mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="products">
-    <!-- المنتجات هتظهر هنا -->
+  <!-- Hero -->
+  <section id="hero" class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image:url('background.jpg');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative text-center text-white">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">شنط أنيقة لحياتك اليومية</h2>
+      <p class="mb-6 text-lg md:text-xl">Baobag بتقدملك الجودة والأناقة في كل قطعة</p>
+      <a href="#products" class="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-lg text-lg font-semibold">تسوق الآن</a>
+    </div>
   </section>
 
-  <!-- Cart Modal -->
-  <div id="cart-modal" class="modal">
-    <div class="modal-content">
-      <h2 class="text-lg font-bold mb-4">سلة المشتريات</h2>
-      <div id="cart-items"></div>
-      <p class="mt-4 font-bold">الإجمالي: <span id="cart-total">0</span> ج.م</p>
-      <div class="flex justify-between mt-4">
-        <button onclick="closeCart()" class="bg-gray-400 text-white px-4 py-2 rounded">إغلاق</button>
-        <button onclick="checkout()" class="bg-green-500 text-white px-4 py-2 rounded">إتمام الشراء</button>
+  <!-- Products (container — سيتم ملؤها من الشيت) -->
+  <section id="products" class="max-w-7xl mx-auto px-4 py-16">
+    <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
+    <div id="productsGrid" class="grid gap-6 md:grid-cols-4 sm:grid-cols-2">
+      <!-- سيتم إنشاء بطاقات المنتجات هنا تلقائياً -->
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="bg-pink-50 py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">عن Baobag</h3>
+      <p class="text-slate-700 leading-relaxed text-lg">
+       "في bao، نرى أن الحقيبة أكثر من مجرد إكسسوار، إنها تعبر عن شخصيتك. ترافقك يوميًا وتحمل أغراضك وتعكس أسلوبك. نختار بعناية مجموعة واسعة من الحقائب، من حقائب اليد الأنيقة إلى الحقائب الظهر العملية، لنضمن أن نجد الحقيبة المناسبة للجميع."
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">تواصل معنا</h3>
+      <p class="mb-4">لطلباتك تواصل معنا عبر الواتساب:</p>
+      <a href="https://wa.me/201115690207" target="_blank" class="bg-pink-600 text-white px-6 py-3 rounded-lg inline-block"> 201115690207</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-pink-600 text-white py-6 mt-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2025 Baobag. جميع الحقوق محفوظة.</p>
+      <div class="flex gap-4">
+        <a href="https://www.tiktok.com/@baobaag?_t=ZS-8ytfgDM2pEe&_r=1" class="hover:text-pink-200">TikTok</a>
+        <a href="https://www.instagram.com/baobaaag?igsh=a291dmx1cmxmODg1" class="hover:text-pink-200">Instagram</a>
+        <a href="https://wa.me/201115690207" class="hover:text-pink-200">WhatsApp</a>
       </div>
+    </div>
+  </footer>
+
+  <!-- Cart Modal -->
+  <div id="cartModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6">
+      <h2 class="text-lg font-semibold mb-4">سلة المشتريات</h2>
+      <div id="cartItems" class="space-y-3 max-h-60 overflow-auto"></div>
+      <p class="mt-4 font-bold">الإجمالي: <span id="cartTotal">0</span> EGP</p>
+      <div class="flex gap-3 mt-4">
+        <button onclick="checkout()" class="w-full bg-pink-600 text-white py-2 rounded-lg">إتمام الطلب</button>
+        <button onclick="clearCart()" class="w-full border border-pink-600 text-pink-600 py-2 rounded-lg">تفريغ السلة</button>
+      </div>
+      <button onclick="closeCart()" class="mt-3 text-sm text-gray-500">إلغاء</button>
     </div>
   </div>
 
-  <!-- Checkout Modal -->
-  <div id="checkout-modal" class="modal">
-    <div class="modal-content">
-      <h2 class="text-lg font-bold mb-4">إتمام الطلب</h2>
-      <form id="checkout-form" class="space-y-4">
-        <input type="text" id="name" placeholder="الاسم" class="w-full border p-2 rounded" required>
-        <input type="text" id="phone" placeholder="رقم الهاتف" class="w-full border p-2 rounded" required>
-        <input type="text" id="address" placeholder="العنوان" class="w-full border p-2 rounded" required>
-        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">تأكيد الطلب</button>
+  <!-- Order Form Modal -->
+  <div id="orderModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6">
+      <h2 class="text-lg font-semibold mb-4">اطلب الآن</h2>
+      <form id="orderForm" class="space-y-3">
+        <input type="hidden" id="productName" name="product">
+        <div>
+          <label class="block text-sm">الاسم</label>
+          <input id="custName" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <div>
+          <label class="block text-sm">رقم الموبايل</label>
+          <input id="custPhone" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <div>
+          <label class="block text-sm">العنوان</label>
+          <input id="custAddress" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <div class="text-sm text-slate-600">مجموع الطلب: <span id="orderSummaryTotal">0</span> EGP</div>
+        <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded-lg">إرسال</button>
       </form>
+      <button onclick="closeForm()" class="mt-3 text-sm text-gray-500">إلغاء</button>
+    </div>
+  </div>
+
+  <!-- Gallery Modal -->
+  <div id="galleryModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <button onclick="closeGallery()" class="absolute top-4 right-6 text-white text-3xl">&times;</button>
+    <div class="relative max-w-3xl w-full flex items-center justify-center">
+      <button onclick="prevImage()" class="absolute left-4 text-white text-3xl">&#10094;</button>
+      <img id="galleryImage" src="" class="max-h-[80vh] rounded-lg shadow-lg">
+      <button onclick="nextImage()" class="absolute right-4 text-white text-3xl">&#10095;</button>
     </div>
   </div>
 
   <script>
-    const SHEET_URL = "https://script.google.com/macros/s/AKfycbzQhzDWRprQEgJyPfrG3TuvI6bnW2iRCkxx-VHaD2vULZahTu4BBUZXeHw4bDHQbjngjA/exec";
-    let cart = [];
+    // ====== CONFIG ======
+    // Products API (your Web App that returns JSON of products)
+    const PRODUCTS_API = "https://script.google.com/macros/s/AKfycbzQhzDWRprQEgJyPfrG3TuvI6bnW2iRCkxx-VHaD2vULZahTu4BBUZXeHw4bDHQbjngjA/exec";
 
-    // جلب المنتجات من Google Sheet
-    async function fetchProducts() {
-      const res = await fetch(SHEET_URL);
-      const products = await res.json();
-      const container = document.getElementById("products");
-      container.innerHTML = "";
-      products.forEach((p, i) => {
-        container.innerHTML += `
-          <div class="bg-white rounded shadow-md overflow-hidden">
-            <img src="${p.image}" class="w-full h-48 object-cover">
-            <div class="p-4">
-              <h3 class="font-bold text-lg">${p.name}</h3>
-              <p class="text-gray-600">${p.description}</p>
-              <p class="text-blue-600 font-bold mt-2">${p.price} ج.م</p>
-              <button onclick="addToCart(${i}, '${p.name}', ${p.price})" class="bg-green-500 text-white px-4 py-2 rounded mt-3">أضف للسلة</button>
+    // Orders Google Script URL (replace if you deployed a different script for orders)
+    const ORDER_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya5FExlprG8iqR4ursd2EBb5zTQffjgd68H-fr_fvW2SBqr5_CyVzWcK2PhxL-49Of/exec";
+
+    // ====== UTILS ======
+    function parsePrice(val){
+      if (typeof val === 'number') return val;
+      if (!val) return 0;
+      // extract digits and decimal
+      const num = parseFloat(String(val).replace(/[^\d.]/g, ''));
+      return isNaN(num) ? 0 : num;
+    }
+
+    // ====== PRODUCTS: fetch and render ======
+    async function loadProducts(){
+      try {
+        const res = await fetch(PRODUCTS_API);
+        const products = await res.json();
+        renderProducts(products);
+      } catch (err) {
+        console.error("خطأ في جلب المنتجات:", err);
+        document.getElementById("productsGrid").innerHTML = "<p class='text-center text-red-500'>فشل تحميل المنتجات. تأكد من إعداد Google Apps Script وخصوصية الشيت.</p>";
+      }
+    }
+
+    function renderProducts(products){
+      const grid = document.getElementById("productsGrid");
+      grid.innerHTML = ""; // empty
+      products.forEach((p, idx) => {
+        // p expected fields: name, price, image, description, images (optional comma/pipe-separated)
+        const displayPrice = (p.price === undefined || p.price === "") ? "" : (String(p.price).toUpperCase().includes("EGP") || String(p.price).toUpperCase().includes("JOD") ? p.price : `${p.price} EGP`);
+        // build card
+        const card = document.createElement("div");
+        card.className = "bg-pink-50 rounded-xl shadow overflow-hidden";
+        const firstImage = p.image || (p.images ? p.images.split("|")[0].trim() : "");
+        // store images in data-images (pipe separated) so gallery can use them
+        const imagesAttr = p.images ? p.images : (firstImage ? firstImage : "");
+        card.innerHTML = `
+          <img src="${firstImage}" alt="${escapeHtml(p.name || '')}" data-images="${escapeHtml(imagesAttr)}" class="w-full h-60 object-cover cursor-pointer product-img">
+          <div class="p-4">
+            <h4 class="font-semibold text-lg">${escapeHtml(p.name || '')}</h4>
+            <p class="text-sm text-slate-600 mt-1">${escapeHtml(p.description || '')}</p>
+            <div class="flex items-center justify-between mt-3">
+              <span class="font-bold text-pink-600">${escapeHtml(displayPrice)}</span>
+              <div class="flex gap-2">
+                <button class="order-now-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-sm" data-name="${escapeAttr(p.name)}" data-price="${escapeAttr(p.price)}">اطلب الآن</button>
+                <button class="add-to-cart-btn bg-white border border-pink-600 text-pink-600 px-3 py-1 rounded-lg text-sm" data-name="${escapeAttr(p.name)}" data-price="${escapeAttr(p.price)}" data-image="${escapeAttr(firstImage)}">أضف للسلة</button>
+              </div>
             </div>
           </div>
         `;
+        grid.appendChild(card);
+      });
+
+      // attach listeners for add-to-cart / order-now / gallery images
+      document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const name = btn.dataset.name || "منتج";
+          const price = parsePrice(btn.dataset.price);
+          const image = btn.dataset.image || "";
+          addToCart(name, price, image);
+        });
+      });
+      document.querySelectorAll(".order-now-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const name = btn.dataset.name || "منتج";
+          const price = parsePrice(btn.dataset.price);
+          // open form with single product (price included)
+          const productText = `${name} — ${price} EGP`;
+          document.getElementById('productName').value = productText;
+          document.getElementById('orderSummaryTotal').innerText = price;
+          openForm();
+        });
+      });
+      document.querySelectorAll(".product-img").forEach(img => {
+        img.addEventListener("click", () => {
+          const imagesRaw = img.dataset.images || img.src || "";
+          const imgs = imagesRaw ? imagesRaw.split("|").map(s => s.trim()).filter(Boolean) : [img.src];
+          openGalleryWithImages(imgs);
+        });
       });
     }
 
-    // إدارة السلة
-    function addToCart(id, name, price) {
-      const existing = cart.find(item => item.id === id);
-      if (existing) {
-        existing.qty++;
-      } else {
-        cart.push({ id, name, price, qty: 1 });
-      }
+    // simple escaping helpers
+    function escapeHtml(s){ if(!s && s !== 0) return ""; return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
+    function escapeAttr(s){ if(!s && s !== 0) return ""; return String(s).replace(/"/g, '&quot;'); }
+
+    // ====== CART logic ======
+    let cart = []; // items { name, price, qty, image }
+
+    function addToCart(name, price, image){
+      const idx = cart.findIndex(i => i.name === name && i.price === price);
+      if(idx > -1) cart[idx].qty += 1;
+      else cart.push({ name, price: Number(price||0), qty: 1, image: image||"" });
       updateCartCount();
+      renderCart();
+      // small visual feedback
+      //alert(name + " تمت إضافته للسلة 🛒");
     }
 
-    function updateCartCount() {
-      document.getElementById("cart-count").innerText = cart.reduce((a, b) => a + b.qty, 0);
+    function updateCartCount(){
+      const count = cart.reduce((s,i) => s + i.qty, 0);
+      document.getElementById("cartCount").innerText = count;
     }
 
-    function openCart() {
-      document.getElementById("cart-modal").style.display = "block";
+    function openCart(){
+      document.getElementById("cartModal").classList.remove("hidden");
+      document.getElementById("cartModal").classList.add("flex");
       renderCart();
     }
-
-    function closeCart() {
-      document.getElementById("cart-modal").style.display = "none";
+    function closeCart(){
+      document.getElementById("cartModal").classList.add("hidden");
+      document.getElementById("cartModal").classList.remove("flex");
     }
 
-    function renderCart() {
-      const container = document.getElementById("cart-items");
-      container.innerHTML = "";
+    function renderCart(){
+      const cartItemsDiv = document.getElementById("cartItems");
+      cartItemsDiv.innerHTML = "";
       let total = 0;
-      cart.forEach((item, i) => {
-        total += item.price * item.qty;
-        container.innerHTML += `
-          <div class="flex justify-between items-center border-b py-2">
-            <span>${item.name} x${item.qty}</span>
-            <span>${item.price * item.qty} ج.م</span>
-            <button onclick="removeFromCart(${i})" class="text-red-500">❌</button>
-          </div>
-        `;
+      if(cart.length === 0){
+        cartItemsDiv.innerHTML = "<p class='text-sm text-slate-600'>السلة فارغة</p>";
+      } else {
+        cart.forEach((item, index) => {
+          const itemTotal = item.price * item.qty;
+          total += itemTotal;
+          const row = document.createElement("div");
+          row.className = "flex items-center justify-between gap-2";
+          row.innerHTML = `
+            <div class="flex-1">
+              <div class="font-medium">${escapeHtml(item.name)}</div>
+              <div class="text-sm text-slate-600">${item.price} EGP × ${item.qty} = ${itemTotal} EGP</div>
+              <div class="mt-2 flex items-center gap-2">
+                <button class="px-2 py-1 border rounded text-sm change-qty" data-idx="${index}" data-delta="-1">-</button>
+                <span class="text-sm">${item.qty}</span>
+                <button class="px-2 py-1 border rounded text-sm change-qty" data-idx="${index}" data-delta="1">+</button>
+                <button class="text-red-600 text-sm ml-3 remove-item" data-idx="${index}">حذف</button>
+              </div>
+            </div>
+          `;
+          cartItemsDiv.appendChild(row);
+        });
+      }
+      document.getElementById("cartTotal").innerText = total;
+      // attach change qty listeners
+      document.querySelectorAll(".change-qty").forEach(b => {
+        b.addEventListener("click", () => {
+          const idx = Number(b.dataset.idx);
+          const delta = Number(b.dataset.delta);
+          changeQty(idx, delta);
+        });
       });
-      document.getElementById("cart-total").innerText = total;
+      document.querySelectorAll(".remove-item").forEach(b => {
+        b.addEventListener("click", () => {
+          const idx = Number(b.dataset.idx);
+          removeFromCart(idx);
+        });
+      });
     }
 
-    function removeFromCart(index) {
-      cart.splice(index, 1);
+    function changeQty(index, delta){
+      if(!cart[index]) return;
+      cart[index].qty += delta;
+      if(cart[index].qty <= 0) cart.splice(index,1);
+      updateCartCount();
       renderCart();
-      updateCartCount();
     }
 
-    // إتمام الطلب
-    function checkout() {
+    function removeFromCart(index){
+      cart.splice(index,1);
+      updateCartCount();
+      renderCart();
+    }
+
+    function clearCart(){
+      if(confirm("هل تريد تفريغ السلة؟")){
+        cart = [];
+        updateCartCount();
+        renderCart();
+        closeCart();
+      }
+    }
+
+    function checkout(){
+      if(cart.length === 0){
+        alert("السلة فارغة، أضف منتجات أولا.");
+        return;
+      }
+      // build summary
+      const productsList = cart.map(i => `${i.name} (x${i.qty})`).join(", ");
+      const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
+      const productsWithTotal = `${productsList} — الإجمالي: ${total} EGP`;
+      document.getElementById('productName').value = productsWithTotal;
+      document.getElementById('orderSummaryTotal').innerText = total;
       closeCart();
-      document.getElementById("checkout-modal").style.display = "block";
+      openForm();
     }
 
-    document.getElementById("checkout-form").addEventListener("submit", async function(e) {
+    // ====== Order form ======
+    function openForm(){
+      document.getElementById("orderModal").classList.remove("hidden");
+      document.getElementById("orderModal").classList.add("flex");
+    }
+    function closeForm(){
+      document.getElementById("orderModal").classList.add("hidden");
+      document.getElementById("orderModal").classList.remove("flex");
+    }
+
+    document.getElementById("orderForm").addEventListener("submit", function(e){
       e.preventDefault();
-      alert("تم إرسال طلبك بنجاح ✅");
-      cart = [];
-      updateCartCount();
-      document.getElementById("checkout-modal").style.display = "none";
+      const payload = {
+        product: document.getElementById('productName').value,
+        name: document.getElementById('custName').value,
+        phone: document.getElementById('custPhone').value,
+        address: document.getElementById('custAddress').value,
+        total: document.getElementById('orderSummaryTotal').innerText || ""
+      };
+      // post to orders script
+      fetch(ORDER_SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify(payload)
+      }).then(res => res.json ? res.json() : Promise.resolve({}))
+        .then(resp => {
+          alert("تم إرسال طلبك بنجاح ✅");
+          closeForm();
+          document.getElementById("orderForm").reset();
+          // clear cart after order
+          cart = [];
+          updateCartCount();
+          renderCart();
+        }).catch(err => {
+          console.error("Order send error:", err);
+          alert("حصل خطأ أثناء إرسال الطلب، حاول مرة تانية.");
+        });
     });
 
-    // تحميل المنتجات عند فتح الموقع
-    fetchProducts();
+    // ====== Gallery functions ======
+    let galleryImgs = [];
+    let galleryIndex = 0;
+    function openGalleryWithImages(imgs){
+      galleryImgs = imgs;
+      galleryIndex = 0;
+      showGalleryImage();
+      document.getElementById("galleryModal").classList.remove("hidden");
+      document.getElementById("galleryModal").classList.add("flex");
+    }
+    function closeGallery(){
+      document.getElementById("galleryModal").classList.add("hidden");
+      document.getElementById("galleryModal").classList.remove("flex");
+    }
+    function showGalleryImage(){
+      if(!galleryImgs || galleryImgs.length === 0) return;
+      document.getElementById("galleryImage").src = galleryImgs[galleryIndex];
+    }
+    function nextImage(){
+      if(!galleryImgs || galleryImgs.length === 0) return;
+      galleryIndex = (galleryIndex + 1) % galleryImgs.length;
+      showGalleryImage();
+    }
+    function prevImage(){
+      if(!galleryImgs || galleryImgs.length === 0) return;
+      galleryIndex = (galleryIndex - 1 + galleryImgs.length) % galleryImgs.length;
+      showGalleryImage();
+    }
+
+    // attach header cart button
+    document.getElementById("openCartBtn").addEventListener("click", openCart);
+
+    // initial load
+    window.addEventListener("DOMContentLoaded", () => {
+      loadProducts();
+      updateCartCount();
+    });
   </script>
 </body>
 </html>
