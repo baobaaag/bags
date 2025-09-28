@@ -3,112 +3,125 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SneakerZone | كوتشيات شيك</title>
+  <title>SneakerZone</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
-    .modal { display: none; }
-    .modal.active { display: flex; }
+    body { font-family: 'Tajawal', sans-serif; }
+    .modal { display: none; position: fixed; z-index: 50; inset: 0; background: rgba(0,0,0,0.7); }
+    .modal.active { display: flex; align-items: center; justify-content: center; }
+    .modal-content { background: #fff; border-radius: 1rem; max-width: 500px; width: 90%; padding: 20px; }
+    .close { cursor: pointer; float: left; font-size: 20px; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body class="bg-white text-slate-800">
 
-  <!-- الهيدر -->
-  <header class="bg-white shadow sticky top-0 z-50">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold text-pink-600">SneakerZone</h1>
-      <button id="cart-btn" class="relative">
-        🛒
-        <span id="cart-count" class="absolute -top-2 -right-2 bg-pink-600 text-white rounded-full text-xs px-1">0</span>
-      </button>
+  <!-- Header -->
+  <header class="bg-pink-600 text-white py-4 shadow">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-2xl font-bold">SneakerZone</h1>
+      <nav class="space-x-4 space-x-reverse">
+        <a href="#products" class="hover:underline">منتجاتنا</a>
+        <a href="#about" class="hover:underline">من نحن</a>
+      </nav>
     </div>
   </header>
 
-  <!-- المنتجات -->
-  <main class="container mx-auto px-4 py-6">
-    <h2 class="text-2xl font-bold mb-6 text-center">منتجاتنا</h2>
-    <div id="products" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-  </main>
+  <!-- Hero -->
+  <section class="bg-pink-100 py-16 text-center">
+    <h2 class="text-4xl font-bold mb-4">كولكشن كوتشيات 2025</h2>
+    <p class="text-lg text-slate-700 mb-6">أحدث صيحات الموضة بأجود الخامات وأفضل الأسعار</p>
+    <a href="#products" class="bg-pink-600 text-white px-6 py-3 rounded-lg text-lg shadow hover:bg-pink-700">تسوق الآن</a>
+  </section>
 
-  <!-- المودال: الفورم -->
-  <div id="order-modal" class="modal fixed inset-0 bg-black bg-opacity-50 items-center justify-center">
-    <div class="bg-white rounded-lg p-6 max-w-md w-full relative">
-      <button id="close-modal" class="absolute top-2 right-2 text-slate-500">✖</button>
-      <h3 class="text-xl font-bold mb-4">إتمام الطلب</h3>
-      <form id="order-form" class="space-y-3">
-        <input type="hidden" id="product-name">
+  <!-- Products -->
+  <section id="products" class="container mx-auto py-16 px-4">
+    <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <!-- المنتجات بتيجي هنا من السكريبت -->
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="bg-slate-100 py-16 px-4">
+    <div class="container mx-auto text-center max-w-2xl">
+      <h3 class="text-3xl font-bold mb-6">من نحن</h3>
+      <p class="text-lg text-slate-700">
+        SneakerZone مكانك الأول للكوتشيات الأصلية والموديلات الجديدة. هدفنا إنك تلاقي الشوز اللي يليق على ستايلك بجودة عالية وسعر مناسب.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-pink-600 text-white py-6 mt-10">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2025 SneakerZone. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <!-- Modal للطلب -->
+  <div id="orderModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 class="text-xl font-bold mb-4">اطلب الآن</h3>
+      <form id="orderForm" class="space-y-4">
+        <input type="hidden" id="productName" name="product">
         <div>
           <label class="block text-sm">الاسم</label>
-          <input type="text" id="customer-name" class="w-full border rounded p-2" required>
+          <input type="text" id="customerName" required class="w-full border rounded px-3 py-2">
         </div>
         <div>
-          <label class="block text-sm">التليفون</label>
-          <input type="text" id="customer-phone" class="w-full border rounded p-2" required>
+          <label class="block text-sm">رقم التليفون</label>
+          <input type="tel" id="customerPhone" required class="w-full border rounded px-3 py-2">
         </div>
         <div>
           <label class="block text-sm">العنوان</label>
-          <textarea id="customer-address" class="w-full border rounded p-2" required></textarea>
+          <textarea id="customerAddress" required class="w-full border rounded px-3 py-2"></textarea>
         </div>
-        <button type="submit" class="bg-pink-600 text-white px-4 py-2 rounded">تأكيد الطلب</button>
+        <button type="submit" class="bg-pink-600 text-white px-4 py-2 rounded">إرسال الطلب</button>
       </form>
     </div>
   </div>
 
-  <!-- المودال: الجاليري -->
-  <div id="gallery-modal" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center">
-    <button id="gallery-prev" class="absolute left-4 text-white text-3xl">❮</button>
-    <img id="gallery-img" src="" class="max-h-[80%] max-w-[80%] rounded shadow-lg">
-    <button id="gallery-next" class="absolute right-4 text-white text-3xl">❯</button>
-    <button id="close-gallery" class="absolute top-4 right-4 text-white text-2xl">✖</button>
-  </div>
-
-  <!-- المودال: السلة -->
-  <div id="cart-modal" class="modal fixed inset-0 bg-black bg-opacity-50 items-center justify-center">
-    <div class="bg-white rounded-lg p-6 max-w-lg w-full relative">
-      <button id="close-cart" class="absolute top-2 right-2 text-slate-500">✖</button>
-      <h3 class="text-xl font-bold mb-4">سلة المشتريات</h3>
-      <div id="cart-items" class="space-y-3"></div>
-      <div class="flex justify-between mt-4 font-bold">
-        <span>الإجمالي:</span>
-        <span id="cart-total">0 ج.م</span>
+  <!-- Modal للصور -->
+  <div id="imageModal" class="modal">
+    <div class="modal-content relative max-w-2xl">
+      <span class="close absolute top-2 left-4 text-black text-2xl cursor-pointer" onclick="closeImageModal()">&times;</span>
+      <img id="modalImage" src="" class="w-full rounded-lg">
+      <div class="flex justify-between mt-2">
+        <button onclick="prevImage()" class="bg-pink-600 text-white px-4 py-2 rounded">◀</button>
+        <button onclick="nextImage()" class="bg-pink-600 text-white px-4 py-2 rounded">▶</button>
       </div>
     </div>
   </div>
 
   <script>
-    const API_URL = "https://script.google.com/macros/s/AKfycbzQhzDWRprQEgJyPfrG3TuvI6bnW2iRCkxx-VHaD2vULZahTu4BBUZXeHw4bDHQbjngjA/exec";
-    const productsContainer = document.getElementById("products");
-    const orderModal = document.getElementById("order-modal");
-    const galleryModal = document.getElementById("gallery-modal");
-    const galleryImg = document.getElementById("gallery-img");
-    const cartModal = document.getElementById("cart-modal");
-
-    let galleryImages = [];
-    let galleryIndex = 0;
-    let cart = [];
+    const SHEET_URL = "https://script.google.com/macros/s/AKfycbzNQEe8bN3p8h6bUoSPIPxWtFRzKOGKX95bzAwlKdwFhFNYGdPcDQZc37C5-47cSzv2Zg/exec";
 
     // تحميل المنتجات
-    async function loadProducts() {
+    async function loadProducts(){
       try {
-        const res = await fetch(API_URL);
-        const products = await res.json();
-        renderProducts(products);
+        const res = await fetch(SHEET_URL);
+        const data = await res.json();
+        renderProducts(data);
       } catch (err) {
-        console.error("خطأ:", err);
-        productsContainer.innerHTML = "<p class='text-red-500'>فشل تحميل المنتجات. تأكد من إعداد Google Apps Script وخصوصية الشيت.</p>";
+        console.error("خطأ في تحميل المنتجات:", err);
       }
     }
 
-    function renderProducts(products) {
-      productsContainer.innerHTML = "";
-      products.forEach(p => {
+    // عرض المنتجات
+    function renderProducts(products){
+      const grid = document.getElementById("productsGrid");
+      grid.innerHTML = "";
+      products.forEach((p) => {
+        const displayPrice = (!p.price || p.price==="") ? "" : 
+          (String(p.price).includes("EGP") || String(p.price).includes("JOD")) ? p.price : `${p.price} EGP`;
+
         const card = document.createElement("div");
-        card.className = "bg-white rounded-xl shadow hover:shadow-lg transition overflow-hidden";
+        card.className = "bg-pink-50 rounded-xl shadow overflow-hidden";
 
-        const imagesAttr = (p.images && p.images.length) ? p.images.join(",") : (p.image || "");
-        const firstImage = (p.images && p.images.length) ? p.images[0] : (p.image || "");
-
-        const priceDisplay = p.price ? `${p.price} ج.م` : "السعر غير متوفر";
+        const firstImage = p.images && p.images.length > 0 ? p.images[0] : "";
+        const imagesAttr = p.images ? p.images.join("|") : "";
 
         card.innerHTML = `
           <img src="${firstImage}" alt="${p.name}" 
@@ -118,106 +131,70 @@
             <h4 class="font-semibold text-lg">${p.name}</h4>
             <p class="text-sm text-slate-600 mt-1">${p.description || ""}</p>
             <div class="flex items-center justify-between mt-3">
-              <span class="font-bold text-pink-600">${priceDisplay}</span>
-              <div class="flex gap-2">
-                <button class="order-now-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-sm" 
-                  data-name="${p.name}" data-price="${p.price}">اطلب الآن</button>
-                <button class="add-to-cart-btn bg-white border border-pink-600 text-pink-600 px-3 py-1 rounded-lg text-sm" 
-                  data-name="${p.name}" data-price="${p.price}" data-image="${firstImage}">أضف للسلة</button>
-              </div>
+              <span class="font-bold text-pink-600">${displayPrice}</span>
+              <button class="order-now-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-sm" 
+                      data-name="${p.name}" data-price="${p.price}">اطلب الآن</button>
             </div>
           </div>
         `;
-        productsContainer.appendChild(card);
+        grid.appendChild(card);
       });
 
-      // فتح الجاليري عند الضغط على الصورة
+      // تفعيل الصور
       document.querySelectorAll(".product-img").forEach(img => {
         img.addEventListener("click", () => {
-          const imgs = img.dataset.images.split(/[,|]/).map(s => s.trim()).filter(Boolean);
-          openGalleryWithImages(imgs);
+          const images = img.dataset.images.split("|");
+          openImageModal(images);
         });
       });
 
-      // زر "اطلب الآن"
+      // تفعيل زر اطلب الآن
       document.querySelectorAll(".order-now-btn").forEach(btn => {
         btn.addEventListener("click", () => {
-          document.getElementById("product-name").value = btn.dataset.name;
-          orderModal.classList.add("active");
-        });
-      });
-
-      // زر "أضف للسلة"
-      document.querySelectorAll(".add-to-cart-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          addToCart(btn.dataset.name, btn.dataset.price, btn.dataset.image);
+          document.getElementById("productName").value = btn.dataset.name;
+          openModal();
         });
       });
     }
 
-    // معرض الصور
-    function openGalleryWithImages(imgs) {
-      galleryImages = imgs;
-      galleryIndex = 0;
-      galleryImg.src = galleryImages[galleryIndex];
-      galleryModal.classList.add("active");
-    }
+    // مودال الطلب
+    const modal = document.getElementById("orderModal");
+    function openModal(){ modal.classList.add("active"); }
+    function closeModal(){ modal.classList.remove("active"); }
 
-    document.getElementById("gallery-prev").addEventListener("click", () => {
-      galleryIndex = (galleryIndex - 1 + galleryImages.length) % galleryImages.length;
-      galleryImg.src = galleryImages[galleryIndex];
-    });
-    document.getElementById("gallery-next").addEventListener("click", () => {
-      galleryIndex = (galleryIndex + 1) % galleryImages.length;
-      galleryImg.src = galleryImages[galleryIndex];
-    });
-    document.getElementById("close-gallery").addEventListener("click", () => {
-      galleryModal.classList.remove("active");
+    document.getElementById("orderForm").addEventListener("submit", async (e)=>{
+      e.preventDefault();
+      alert("تم إرسال طلبك بنجاح ✅");
+      closeModal();
     });
 
-    // السلة
-    function addToCart(name, price, image) {
-      cart.push({ name, price: Number(price), image });
-      updateCart();
+    // مودال الصور
+    let currentImages = [];
+    let currentIndex = 0;
+    function openImageModal(images){
+      currentImages = images;
+      currentIndex = 0;
+      document.getElementById("modalImage").src = images[0];
+      document.getElementById("imageModal").classList.add("active");
     }
-
-    function updateCart() {
-      document.getElementById("cart-count").textContent = cart.length;
-      const cartItems = document.getElementById("cart-items");
-      cartItems.innerHTML = "";
-      let total = 0;
-      cart.forEach((item, i) => {
-        total += item.price;
-        const div = document.createElement("div");
-        div.className = "flex items-center justify-between border-b pb-2";
-        div.innerHTML = `
-          <div class="flex items-center gap-2">
-            <img src="${item.image}" class="w-12 h-12 object-cover rounded">
-            <span>${item.name}</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span>${item.price} ج.م</span>
-            <button class="text-red-500 remove-btn" data-index="${i}">✖</button>
-          </div>
-        `;
-        cartItems.appendChild(div);
-      });
-      document.getElementById("cart-total").textContent = total + " ج.م";
-
-      document.querySelectorAll(".remove-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          cart.splice(btn.dataset.index, 1);
-          updateCart();
-        });
-      });
+    function closeImageModal(){
+      document.getElementById("imageModal").classList.remove("active");
     }
-
-    // فتح/إغلاق المودالات
-    document.getElementById("close-modal").addEventListener("click", () => orderModal.classList.remove("active"));
-    document.getElementById("cart-btn").addEventListener("click", () => cartModal.classList.add("active"));
-    document.getElementById("close-cart").addEventListener("click", () => cartModal.classList.remove("active"));
+    function prevImage(){
+      if(currentImages.length>0){
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        document.getElementById("modalImage").src = currentImages[currentIndex];
+      }
+    }
+    function nextImage(){
+      if(currentImages.length>0){
+        currentIndex = (currentIndex + 1) % currentImages.length;
+        document.getElementById("modalImage").src = currentImages[currentIndex];
+      }
+    }
 
     loadProducts();
   </script>
+
 </body>
 </html>
