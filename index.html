@@ -1,200 +1,306 @@
 <!DOCTYPE html>
+
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SneakerZone</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Baobag | شنط بتصميم أنيق</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
-    body { font-family: 'Tajawal', sans-serif; }
-    .modal { display: none; position: fixed; z-index: 50; inset: 0; background: rgba(0,0,0,0.7); }
-    .modal.active { display: flex; align-items: center; justify-content: center; }
-    .modal-content { background: #fff; border-radius: 1rem; max-width: 500px; width: 90%; padding: 20px; }
-    .close { cursor: pointer; float: left; font-size: 20px; }
+    .modal { display: none; }
+    .modal.flex { display:flex; }
   </style>
 </head>
 <body class="bg-white text-slate-800">
 
   <!-- Header -->
-  <header class="bg-pink-600 text-white py-4 shadow">
-    <div class="container mx-auto flex justify-between items-center px-4">
-      <h1 class="text-2xl font-bold">SneakerZone</h1>
-      <nav class="space-x-4 space-x-reverse">
-        <a href="#products" class="hover:underline">منتجاتنا</a>
-        <a href="#about" class="hover:underline">من نحن</a>
+
+  <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur border-b z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-pink-600">Baobag</h1>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="#hero" class="hover:text-pink-600">الرئيسية</a>
+        <a href="#products" class="hover:text-pink-600">المنتجات</a>
+        <a href="#about" class="hover:text-pink-600">عنّا</a>
+        <a href="#contact" class="hover:text-pink-600">تواصل معنا</a>
       </nav>
+      <div class="flex items-center gap-4">
+        <a href="#products" class="bg-pink-600 text-white px-4 py-2 rounded-lg text-sm md:hidden">تسوق الآن</a>
+        <div class="relative">
+          <button id="openCartBtn" aria-label="افتح السلة" class="relative text-2xl">
+            🛒
+            <span id="cartCount" class="absolute -top-2 -right-2 bg-pink-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">0</span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="bg-pink-100 py-16 text-center">
-    <h2 class="text-4xl font-bold mb-4">كولكشن كوتشيات 2025</h2>
-    <p class="text-lg text-slate-700 mb-6">أحدث صيحات الموضة بأجود الخامات وأفضل الأسعار</p>
-    <a href="#products" class="bg-pink-600 text-white px-6 py-3 rounded-lg text-lg shadow hover:bg-pink-700">تسوق الآن</a>
-  </section>
 
-  <!-- Products -->
-  <section id="products" class="container mx-auto py-16 px-4">
-    <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
-    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <!-- المنتجات بتيجي هنا من السكريبت -->
+  <section id="hero" class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image:url('background.jpg');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative text-center text-white">
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">شنط أنيقة لحياتك اليومية</h2>
+      <p class="mb-6 text-lg md:text-xl">Baobag بتقدملك الجودة والأناقة في كل قطعة</p>
+      <a href="#products" class="bg-pink-600 hover:bg-pink-700 px-6 py-3 rounded-lg text-lg font-semibold">تسوق الآن</a>
     </div>
   </section>
 
+  <!-- Products -->
+
+  <section id="products" class="max-w-7xl mx-auto px-4 py-16">
+    <h3 class="text-3xl font-bold text-center mb-10">منتجاتنا</h3>
+    <div id="productsGrid" class="grid gap-6 md:grid-cols-4 sm:grid-cols-2"></div>
+  </section>
+
   <!-- About -->
-  <section id="about" class="bg-slate-100 py-16 px-4">
-    <div class="container mx-auto text-center max-w-2xl">
-      <h3 class="text-3xl font-bold mb-6">من نحن</h3>
-      <p class="text-lg text-slate-700">
-        SneakerZone مكانك الأول للكوتشيات الأصلية والموديلات الجديدة. هدفنا إنك تلاقي الشوز اللي يليق على ستايلك بجودة عالية وسعر مناسب.
+
+  <section id="about" class="bg-pink-50 py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">عن Baobag</h3>
+      <p class="text-slate-700 leading-relaxed text-lg">
+       "في bao، نرى أن الحقيبة أكثر من مجرد إكسسوار، إنها تعبر عن شخصيتك. ترافقك يوميًا وتحمل أغراضك وتعكس أسلوبك."
       </p>
     </div>
   </section>
 
+  <!-- Contact -->
+
+  <section id="contact" class="bg-white py-16">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-6">تواصل معنا</h3>
+      <p class="mb-4">لطلباتك تواصل معنا عبر الواتساب:</p>
+      <a href="https://wa.me/201115690207" target="_blank" class="bg-pink-600 text-white px-6 py-3 rounded-lg inline-block">201115690207</a>
+    </div>
+  </section>
+
   <!-- Footer -->
+
   <footer class="bg-pink-600 text-white py-6 mt-10">
-    <div class="container mx-auto text-center">
-      <p>&copy; 2025 SneakerZone. جميع الحقوق محفوظة.</p>
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+      <p>© 2025 Baobag. جميع الحقوق محفوظة.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-pink-200">TikTok</a>
+        <a href="#" class="hover:text-pink-200">Instagram</a>
+        <a href="#" class="hover:text-pink-200">WhatsApp</a>
+      </div>
     </div>
   </footer>
 
-  <!-- Modal للطلب -->
-  <div id="orderModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h3 class="text-xl font-bold mb-4">اطلب الآن</h3>
-      <form id="orderForm" class="space-y-4">
-        <input type="hidden" id="productName" name="product">
-        <div>
-          <label class="block text-sm">الاسم</label>
-          <input type="text" id="customerName" required class="w-full border rounded px-3 py-2">
-        </div>
-        <div>
-          <label class="block text-sm">رقم التليفون</label>
-          <input type="tel" id="customerPhone" required class="w-full border rounded px-3 py-2">
-        </div>
-        <div>
-          <label class="block text-sm">العنوان</label>
-          <textarea id="customerAddress" required class="w-full border rounded px-3 py-2"></textarea>
-        </div>
-        <button type="submit" class="bg-pink-600 text-white px-4 py-2 rounded">إرسال الطلب</button>
-      </form>
+  <!-- Cart Modal -->
+
+  <div id="cartModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6">
+      <h2 class="text-lg font-semibold mb-4">سلة المشتريات</h2>
+      <div id="cartItems" class="space-y-3 max-h-60 overflow-auto"></div>
+      <p class="mt-4 font-bold">الإجمالي: <span id="cartTotal">0</span> EGP</p>
+      <div class="flex gap-3 mt-4">
+        <button onclick="checkout()" class="w-full bg-pink-600 text-white py-2 rounded-lg">إتمام الطلب</button>
+        <button onclick="clearCart()" class="w-full border border-pink-600 text-pink-600 py-2 rounded-lg">تفريغ السلة</button>
+      </div>
+      <button onclick="closeCart()" class="mt-3 text-sm text-gray-500">إلغاء</button>
     </div>
   </div>
 
-  <!-- Modal للصور -->
-  <div id="imageModal" class="modal">
-    <div class="modal-content relative max-w-2xl">
-      <span class="close absolute top-2 left-4 text-black text-2xl cursor-pointer" onclick="closeImageModal()">&times;</span>
-      <img id="modalImage" src="" class="w-full rounded-lg">
-      <div class="flex justify-between mt-2">
-        <button onclick="prevImage()" class="bg-pink-600 text-white px-4 py-2 rounded">◀</button>
-        <button onclick="nextImage()" class="bg-pink-600 text-white px-4 py-2 rounded">▶</button>
-      </div>
+  <!-- Order Form Modal -->
+
+  <div id="orderModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6">
+      <h2 class="text-lg font-semibold mb-4">اطلب الآن</h2>
+      <form id="orderForm" class="space-y-3">
+        <input type="hidden" id="productName" name="product">
+        <div>
+          <label class="block text-sm">الاسم</label>
+          <input id="custName" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <div>
+          <label class="block text-sm">رقم الموبايل</label>
+          <input id="custPhone" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <div>
+          <label class="block text-sm">العنوان</label>
+          <input id="custAddress" required class="w-full border px-3 py-2 rounded-lg">
+        </div>
+        <div class="text-sm text-slate-600">مجموع الطلب: <span id="orderSummaryTotal">0</span> EGP</div>
+        <button type="submit" class="w-full bg-pink-600 text-white py-2 rounded-lg">إرسال</button>
+      </form>
+      <button onclick="closeForm()" class="mt-3 text-sm text-gray-500">إلغاء</button>
+    </div>
+  </div>
+
+  <!-- Gallery Modal -->
+
+  <div id="galleryModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+    <button onclick="closeGallery()" class="absolute top-4 right-6 text-white text-3xl">&times;</button>
+    <div class="relative max-w-3xl w-full flex items-center justify-center">
+      <button onclick="prevImage()" class="absolute left-4 text-white text-3xl">&#10094;</button>
+      <img id="galleryImage" src="" class="max-h-[80vh] rounded-lg shadow-lg">
+      <button onclick="nextImage()" class="absolute right-4 text-white text-3xl">&#10095;</button>
     </div>
   </div>
 
   <script>
-    const SHEET_URL = "https://script.google.com/macros/s/AKfycbzNQEe8bN3p8h6bUoSPIPxWtFRzKOGKX95bzAwlKdwFhFNYGdPcDQZc37C5-47cSzv2Zg/exec";
+    const PRODUCTS_API = "https://script.google.com/macros/s/AKfycbzQhzDWRprQEgJyPfrG3TuvI6bnW2iRCkxx-VHaD2vULZahTu4BBUZXeHw4bDHQbjngjA/exec";
+    const ORDER_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya5FExlprG8iqR4ursd2EBb5zTQffjgd68H-fr_fvW2SBqr5_CyVzWcK2PhxL-49Of/exec";
 
-    // تحميل المنتجات
+    let cart = [];
+    let galleryImgs = [];
+    let galleryIndex = 0;
+
+    function parsePrice(val){ const num = parseFloat(String(val).replace(/[^\d.]/g, '')); return isNaN(num)?0:num; }
+    function escapeHtml(s){ if(!s && s !== 0) return ""; return String(s).replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[m]; }); }
+    function escapeAttr(s){ if(!s && s !== 0) return ""; return String(s).replace(/"/g, '&quot;'); }
+
     async function loadProducts(){
       try {
-        const res = await fetch(SHEET_URL);
-        const data = await res.json();
-        renderProducts(data);
-      } catch (err) {
-        console.error("خطأ في تحميل المنتجات:", err);
+        const res = await fetch(PRODUCTS_API);
+        const products = await res.json();
+        renderProducts(products);
+      } catch(err){
+        console.error(err);
+        document.getElementById("productsGrid").innerHTML="<p class='text-center text-red-500'>فشل تحميل المنتجات.</p>";
       }
     }
 
-    // عرض المنتجات
     function renderProducts(products){
       const grid = document.getElementById("productsGrid");
-      grid.innerHTML = "";
-      products.forEach((p) => {
-        const displayPrice = (!p.price || p.price==="") ? "" : 
-          (String(p.price).includes("EGP") || String(p.price).includes("JOD")) ? p.price : `${p.price} EGP`;
-
+      grid.innerHTML="";
+      products.forEach(p=>{
+        const firstImage = p.image || (p.images? p.images.split("|")[0].trim() : "");
+        const imagesAttr = p.images ? p.images : (firstImage ? firstImage : "");
+        const displayPrice = parsePrice(p.price)+" EGP";
         const card = document.createElement("div");
-        card.className = "bg-pink-50 rounded-xl shadow overflow-hidden";
-
-        const firstImage = p.images && p.images.length > 0 ? p.images[0] : "";
-        const imagesAttr = p.images ? p.images.join("|") : "";
-
-        card.innerHTML = `
-          <img src="${firstImage}" alt="${p.name}" 
-               data-images="${imagesAttr}" 
-               class="w-full h-60 object-cover cursor-pointer product-img">
+        card.className="bg-pink-50 rounded-xl shadow overflow-hidden";
+        card.innerHTML=`
+          <img src="${firstImage}" data-images="${escapeAttr(imagesAttr)}" class="w-full h-60 object-cover cursor-pointer product-img">
           <div class="p-4">
-            <h4 class="font-semibold text-lg">${p.name}</h4>
-            <p class="text-sm text-slate-600 mt-1">${p.description || ""}</p>
+            <h4 class="font-semibold text-lg">${escapeHtml(p.name||'')}</h4>
+            <p class="text-sm text-slate-600 mt-1">${escapeHtml(p.description||'')}</p>
             <div class="flex items-center justify-between mt-3">
-              <span class="font-bold text-pink-600">${displayPrice}</span>
-              <button class="order-now-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-sm" 
-                      data-name="${p.name}" data-price="${p.price}">اطلب الآن</button>
+              <span class="font-bold text-pink-600">${escapeHtml(displayPrice)}</span>
+              <div class="flex gap-2">
+                <button class="order-now-btn bg-pink-600 text-white px-3 py-1 rounded-lg text-sm" data-name="${escapeAttr(p.name)}" data-price="${escapeAttr(p.price)}">اطلب الآن</button>
+                <button class="add-to-cart-btn bg-white border border-pink-600 text-pink-600 px-3 py-1 rounded-lg text-sm" data-name="${escapeAttr(p.name)}" data-price="${escapeAttr(p.price)}" data-image="${escapeAttr(firstImage)}">أضف للسلة</button>
+              </div>
             </div>
           </div>
         `;
         grid.appendChild(card);
       });
 
-      // تفعيل الصور
-      document.querySelectorAll(".product-img").forEach(img => {
-        img.addEventListener("click", () => {
-          const images = img.dataset.images.split("|");
-          openImageModal(images);
+      document.querySelectorAll(".add-to-cart-btn").forEach(btn=>{
+        btn.addEventListener("click",()=>{ addToCart(btn.dataset.name, parsePrice(btn.dataset.price), btn.dataset.image); });
+      });
+
+      document.querySelectorAll(".order-now-btn").forEach(btn=>{
+        btn.addEventListener("click",()=>{
+          const name=btn.dataset.name||"منتج";
+          const price=parsePrice(btn.dataset.price);
+          const productText=`${name} — ${price} EGP`;
+          document.getElementById('productName').value=productText;
+          document.getElementById('orderSummaryTotal').innerText=price;
+          openForm();
         });
       });
 
-      // تفعيل زر اطلب الآن
-      document.querySelectorAll(".order-now-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          document.getElementById("productName").value = btn.dataset.name;
-          openModal();
+      document.querySelectorAll(".product-img").forEach(img=>{
+        img.addEventListener("click",()=>{
+          const imgsRaw = img.dataset.images || img.src;
+          const imgs = imgsRaw.split("|").map(s=>s.trim()).filter(Boolean);
+          openGalleryWithImages(imgs);
         });
       });
     }
 
-    // مودال الطلب
-    const modal = document.getElementById("orderModal");
-    function openModal(){ modal.classList.add("active"); }
-    function closeModal(){ modal.classList.remove("active"); }
-
-    document.getElementById("orderForm").addEventListener("submit", async (e)=>{
-      e.preventDefault();
-      alert("تم إرسال طلبك بنجاح ✅");
-      closeModal();
-    });
-
-    // مودال الصور
-    let currentImages = [];
-    let currentIndex = 0;
-    function openImageModal(images){
-      currentImages = images;
-      currentIndex = 0;
-      document.getElementById("modalImage").src = images[0];
-      document.getElementById("imageModal").classList.add("active");
+    function addToCart(name, price, image){
+      const idx=cart.findIndex(i=>i.name===name && i.price===price);
+      if(idx>-1) cart[idx].qty+=1;
+      else cart.push({name,price:Number(price||0),qty:1,image:image||""});
+      updateCartCount();
+      renderCart();
     }
-    function closeImageModal(){
-      document.getElementById("imageModal").classList.remove("active");
+
+    function updateCartCount(){
+      document.getElementById("cartCount").innerText=cart.reduce((s,i)=>s+i.qty,0);
     }
-    function prevImage(){
-      if(currentImages.length>0){
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-        document.getElementById("modalImage").src = currentImages[currentIndex];
+
+    function openCart(){document.getElementById("cartModal").classList.remove("hidden"); document.getElementById("cartModal").classList.add("flex"); renderCart();}
+    function closeCart(){document.getElementById("cartModal").classList.add("hidden"); document.getElementById("cartModal").classList.remove("flex");}
+
+    function renderCart(){
+      const cartItemsDiv=document.getElementById("cartItems");
+      cartItemsDiv.innerHTML="";
+      let total=0;
+      if(cart.length===0){cartItemsDiv.innerHTML="<p class='text-sm text-slate-600'>السلة فارغة</p>";}
+      else{
+        cart.forEach((item,index)=>{
+          const itemTotal=item.price*item.qty;
+          total+=itemTotal;
+          const row=document.createElement("div");
+          row.className="flex items-center justify-between gap-2";
+          row.innerHTML=`
+            <div class="flex-1">
+              <div class="font-medium">${escapeHtml(item.name)}</div>
+              <div class="text-sm text-slate-600">${item.price} EGP × ${item.qty} = ${itemTotal} EGP</div>
+              <div class="mt-2 flex items-center gap-2">
+                <button class="px-2 py-1 border rounded text-sm change-qty" data-idx="${index}" data-delta="-1">-</button>
+                <span class="text-sm">${item.qty}</span>
+                <button class="px-2 py-1 border rounded text-sm change-qty" data-idx="${index}" data-delta="1">+</button>
+                <button class="text-red-600 text-sm ml-3 remove-item" data-idx="${index}">حذف</button>
+              </div>
+            </div>
+          `;
+          cartItemsDiv.appendChild(row);
+        });
       }
-    }
-    function nextImage(){
-      if(currentImages.length>0){
-        currentIndex = (currentIndex + 1) % currentImages.length;
-        document.getElementById("modalImage").src = currentImages[currentIndex];
-      }
+      document.getElementById("cartTotal").innerText=total;
+      document.querySelectorAll(".change-qty").forEach(b=>{b.addEventListener("click",()=>{changeQty(Number(b.dataset.idx),Number(b.dataset.delta));});});
+      document.querySelectorAll(".remove-item").forEach(b=>{b.addEventListener("click",()=>{removeFromCart(Number(b.dataset.idx));});});
     }
 
-    loadProducts();
+    function changeQty(index,delta){if(!cart[index])return; cart[index].qty+=delta; if(cart[index].qty<=0) cart.splice(index,1); updateCartCount(); renderCart();}
+    function removeFromCart(index){cart.splice(index,1); updateCartCount(); renderCart();}
+    function clearCart(){if(confirm("هل تريد تفريغ السلة؟")){cart=[]; updateCartCount(); renderCart(); closeCart();}}
+
+    function checkout(){
+      if(cart.length===0){alert("السلة فارغة، أضف منتجات أولا."); return;}
+      const productsList=cart.map(i=>`${i.name} (x${i.qty})`).join(", ");
+      const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+      const productsWithTotal=`${productsList} — الإجمالي: ${total} EGP`;
+      document.getElementById('productName').value=productsWithTotal;
+      document.getElementById('orderSummaryTotal').innerText=total;
+      closeCart();
+      openForm();
+    }
+
+    function openForm(){document.getElementById("orderModal").classList.remove("hidden"); document.getElementById("orderModal").classList.add("flex");}
+    function
+
+
+closeForm(){document.getElementById("orderModal").classList.add("hidden"); document.getElementById("orderModal").classList.remove("flex");}
+
+```
+document.getElementById("orderForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const payload={product:document.getElementById('productName').value,name:document.getElementById('custName').value,phone:document.getElementById('custPhone').value,address:document.getElementById('custAddress').value,total:document.getElementById('orderSummaryTotal').innerText||""};
+  fetch(ORDER_SCRIPT_URL,{method:"POST",body:JSON.stringify(payload)})
+    .then(res=>res.json?res.json():Promise.resolve({}))
+    .then(resp=>{alert("تم إرسال طلبك بنجاح ✅"); closeForm(); document.getElementById("orderForm").reset(); cart=[]; updateCartCount(); renderCart();})
+    .catch(err=>{console.error(err); alert("حصل خطأ أثناء إرسال الطلب، حاول مرة تانية.");});
+});
+
+function openGalleryWithImages(imgs){galleryImgs=imgs; galleryIndex=0; showGalleryImage(); document.getElementById("galleryModal").classList.remove("hidden"); document.getElementById("galleryModal").classList.add("flex");}
+function closeGallery(){document.getElementById("galleryModal").classList.add("hidden"); document.getElementById("galleryModal").classList.remove("flex");}
+function showGalleryImage(){if(!galleryImgs||galleryImgs.length===0)return; document.getElementById("galleryImage").src=galleryImgs[galleryIndex];}
+function nextImage(){if(!galleryImgs||galleryImgs.length===0)return; galleryIndex=(galleryIndex+1)%galleryImgs.length; showGalleryImage();}
+function prevImage(){if(!galleryImgs||galleryImgs.length===0)return; galleryIndex=(galleryIndex-1+galleryImgs.length)%galleryImgs.length; showGalleryImage();}
+
+document.getElementById("openCartBtn").addEventListener("click", openCart);
+window.addEventListener("DOMContentLoaded",()=>{loadProducts(); updateCartCount();});
+```
+
   </script>
-
 </body>
 </html>
